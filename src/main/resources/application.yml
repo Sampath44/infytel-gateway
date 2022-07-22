@@ -1,0 +1,16 @@
+spring:
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+      routes:
+      - id: order-service
+        uri: lb://order-service
+        predicates:
+        - Path=/order/**
+      - id: payment-service
+        uri: lb://payment-service
+        predicates:
+        - Path=/payment/**
+
